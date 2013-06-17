@@ -32,7 +32,7 @@ do_start() {
   $IPT -P OUTPUT ACCEPT
 
   $IPT -A INPUT -i lo -j ACCEPT
-  $IPT -A INPUT -i $EXT -m state --state ESTABLISHED,RELATED -j ACCEPT
+  $IPT -A INPUT -i $EXT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
   $IPT -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 
